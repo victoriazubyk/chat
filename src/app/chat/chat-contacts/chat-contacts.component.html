@@ -1,0 +1,18 @@
+<div class="contacts">
+  <div class="contacts-search">
+    <div class="search-wrapper">
+      <input class="search-input" placeholder="Name" type="text" (input)="filterContacts($event.target.value)">
+    </div>
+  </div>
+  <ul class="contacts-list">
+    <p class="chats-title">Chats</p>
+    <li *ngFor="let contact of filteredContacts">
+      <a class="contacts-list-item"
+         [routerLink]="['/', contact.id]" 
+         routerLinkActive="active" 
+         [routerLinkActiveOptions]="{exact: true}">
+        {{ contact.name }}
+      </a>
+    </li>
+  </ul>
+</div>

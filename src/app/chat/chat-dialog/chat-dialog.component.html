@@ -1,0 +1,22 @@
+<div class="chat-dialog">
+  <div class="chat-dialog-header">
+    <h3>{{ currentContact?.name }}</h3>
+  </div>
+  
+  <div class="chat-dialog-area">
+    <ng-container *ngFor="let message of messages">
+        <div 
+            class="message" 
+            [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
+          <p class="message-content">{{ message.content }}</p>
+          <span class="message-date">{{message.date | date:'medium'}}</span>
+        </div>
+    </ng-container>
+  </div>
+    
+  <div class="chat-dialog-footer">
+    <input class="input-message" placeholder="Type your message" type="text" [(ngModel)]="formValue" (keyup.enter)="sendMessage()">
+    <button class="send-message" (click)="sendMessage()">Send</button>
+  </div>
+
+</div>
